@@ -68,11 +68,13 @@
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
-    <Compile Include="IService1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\SensorService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Data\" />
+    <Folder Include="Logs\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Web.Debug.config">
