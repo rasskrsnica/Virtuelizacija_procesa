@@ -39,30 +39,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="..\SensorCommon\Contracts\ISensorService.cs">
-      <Link>Contracts\ISensorService.cs</Link>
-    </Compile>
-    <Compile Include="..\SensorCommon\Models\DataFormatFault.cs">
-      <Link>Models\DataFormatFault.cs</Link>
-    </Compile>
-    <Compile Include="..\SensorCommon\Models\EventInfo.cs">
-      <Link>Models\EventInfo.cs</Link>
-    </Compile>
-    <Compile Include="..\SensorCommon\Models\SensorResponse.cs">
-      <Link>Models\SensorResponse.cs</Link>
-    </Compile>
-    <Compile Include="..\SensorCommon\Models\SensorSample.cs">
-      <Link>Models\SensorSample.cs</Link>
-    </Compile>
-    <Compile Include="..\SensorCommon\Models\SessionMeta.cs">
-      <Link>Models\SessionMeta.cs</Link>
-    </Compile>
-    <Compile Include="..\SensorCommon\Models\TransferStatus.cs">
-      <Link>Models\TransferStatus.cs</Link>
-    </Compile>
-    <Compile Include="..\SensorCommon\Models\ValidationFault.cs">
-      <Link>Models\ValidationFault.cs</Link>
-    </Compile>
+    <Compile Include="Contracts\ISensorService.cs" />
+    <Compile Include="Models\DataFormatFault.cs" />
+    <Compile Include="Models\EventInfo.cs" />
+    <Compile Include="Models\SensorResponse.cs" />
+    <Compile Include="Models\SensorSample.cs" />
+    <Compile Include="Models\SessionMeta.cs" />
+    <Compile Include="Models\TransferStatus.cs" />
+    <Compile Include="Models\ValidationFault.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

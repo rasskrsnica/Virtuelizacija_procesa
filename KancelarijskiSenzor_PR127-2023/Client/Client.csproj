@@ -41,17 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="..\SensorClient\Program.cs">
-      <Link>Program.cs</Link>
-    </Compile>
-    <Compile Include="..\SensorClient\Infrastructure\CsvDatasetReader.cs">
-      <Link>CsvReader.cs</Link>
-    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Infrastructure\CsvDatasetReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="..\SensorClient\Data\Data.csv">
-      <Link>Data\Data.csv</Link>
+    <None Include="Data\Data.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

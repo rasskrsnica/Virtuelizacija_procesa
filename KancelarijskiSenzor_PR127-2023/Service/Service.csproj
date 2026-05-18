@@ -43,21 +43,11 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="..\SensorService\Service1.svc.cs">
-      <Link>Service1.cs</Link>
-    </Compile>
-    <Compile Include="..\SensorService\Services\SensorService.cs">
-      <Link>SensorService.cs</Link>
-    </Compile>
-    <Compile Include="..\SensorService\SensorAnalytics.cs">
-      <Link>SensorAnalytics.cs</Link>
-    </Compile>
-    <Compile Include="..\SensorService\SensorStorage.cs">
-      <Link>SensorStorage.cs</Link>
-    </Compile>
-    <Compile Include="..\SensorService\SessionState.cs">
-      <Link>SessionState.cs</Link>
-    </Compile>
+    <Compile Include="Service1.cs" />
+    <Compile Include="Services\SensorService.cs" />
+    <Compile Include="SensorAnalytics.cs" />
+    <Compile Include="SensorStorage.cs" />
+    <Compile Include="SessionState.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
