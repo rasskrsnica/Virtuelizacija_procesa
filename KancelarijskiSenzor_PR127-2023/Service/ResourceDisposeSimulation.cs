@@ -9,7 +9,6 @@ namespace SensorService
         public static void RunStorageSimulation()
         {
             string sessionFolder = null;
-            string sessionId = null;
 
             try
             {
@@ -24,7 +23,6 @@ namespace SensorService
                         Pressure = 1010
                     });
                     sessionFolder = storage.CurrentSessionDirectory;
-                    sessionId = storage.CurrentSessionId;
                     storage.SaveMeasurement(new SensorSample
                     {
                         DateTime = DateTime.Now,
@@ -42,13 +40,9 @@ namespace SensorService
                 Console.WriteLine("[SIMULACIJA] Uhvaćen izuzetak: " + ex.Message);
             }
 
-            if (!string.IsNullOrWhiteSpace(sessionFolder) && !string.IsNullOrWhiteSpace(sessionId) && Directory.Exists(sessionFolder))
+            if (!string.IsNullOrWhiteSpace(sessionFolder) && Directory.Exists(sessionFolder))
             {
-                foreach (string file in Directory.GetFiles(sessionFolder, sessionId + "_*"))
-                {
-                    File.Delete(file);
-                }
-
+                Directory.Delete(sessionFolder, true);
                 Console.WriteLine("[SIMULACIJA] Server fajlovi su obrisani, writer-i nisu ostali zakljucani.");
             }
         }

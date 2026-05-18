@@ -1,0 +1,8 @@
+Volume=30
+T_DHT=22
+T_BMP=22.1
+Pressure=1008
+DateTime=2026-05-18T15:34:41.9583616+02:00
+SessionId=20260518_153449_575
+ReceivedRows=4
+RejectedRows=0

@@ -27,15 +27,15 @@ namespace SensorService
         public string CreateSession(SessionMeta header)
         {
             string sessionId = DateTime.Now.ToString("yyyyMMdd_HHmmss_fff", CultureInfo.InvariantCulture);
-            string folder = Path.Combine(storagePath, "OfficeSensor", DateTime.Now.ToString("yyyyMMdd", CultureInfo.InvariantCulture));
+            string folder = Path.Combine(storagePath, "OfficeSensor", DateTime.Now.ToString("yyyyMMdd", CultureInfo.InvariantCulture), sessionId);
             Directory.CreateDirectory(folder);
             CurrentSessionDirectory = folder;
             CurrentSessionId = sessionId;
 
-            string sessionFile = Path.Combine(folder, sessionId + "_measurements_session.csv");
-            string rejectedFile = Path.Combine(folder, sessionId + "_rejects.csv");
-            string eventFile = Path.Combine(folder, sessionId + "_events.log");
-            metadataFile = Path.Combine(folder, sessionId + "_metadata.txt");
+            string sessionFile = Path.Combine(folder, "measurements_session.csv");
+            string rejectedFile = Path.Combine(folder, "rejects.csv");
+            string eventFile = Path.Combine(folder, "events.log");
+            metadataFile = Path.Combine(folder, "metadata.txt");
 
             writer = new StreamWriter(sessionFile, false);
             rejectedWriter = new StreamWriter(rejectedFile, false);

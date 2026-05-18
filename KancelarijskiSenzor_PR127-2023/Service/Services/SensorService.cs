@@ -23,6 +23,14 @@ namespace SensorService.Services
         private readonly SensorAnalytics analytics = new SensorAnalytics();
         private bool disposed;
 
+        public SensorService()
+        {
+            OnTransferStarted += LogTransferEvent;
+            OnSampleReceived += LogSampleEvent;
+            OnTransferCompleted += LogTransferEvent;
+            OnWarningRaised += LogWarningEvent;
+        }
+
         public SensorResponse StartSession(SessionMeta meta)
         {
             ValidateMeta(meta);
@@ -36,6 +44,7 @@ namespace SensorService.Services
             EventInfo started = new EventInfo("OnTransferStarted", "prenos u toku... session=" + sessionId);
             AddEvent(result, started);
             RaiseTransferStarted(started);
+            Console.WriteLine("prenos u toku...");
             Console.WriteLine("Start session: " + sessionId + " V=" + meta.Volume.ToString(CultureInfo.InvariantCulture));
             return result;
         }
@@ -101,6 +110,7 @@ namespace SensorService.Services
             AddEvent(result, completed);
             storage.SaveSummary(state);
             RaiseTransferCompleted(completed);
+            Console.WriteLine("zavrsen prenos");
             Console.WriteLine("End session. Primljeno=" + state.SampleCount + ", odbaceno=" + state.RejectedCount);
 
             CloseOpenSession();
@@ -235,6 +245,21 @@ namespace SensorService.Services
         private void RaiseWarning(EventInfo e)
         {
             if (OnWarningRaised != null) OnWarningRaised(this, e);
+        }
+
+        private static void LogTransferEvent(object sender, EventInfo e)
+        {
+            Console.WriteLine("[PRETPLATA] " + e.Name + " - " + e.Message);
+        }
+
+        private static void LogSampleEvent(object sender, SensorSample sample)
+        {
+            Console.WriteLine("[PRETPLATA] OnSampleReceived - V=" + sample.Volume.ToString(CultureInfo.InvariantCulture) + ", T_DHT=" + sample.T_DHT.ToString(CultureInfo.InvariantCulture) + ", T_BMP=" + sample.T_BMP.ToString(CultureInfo.InvariantCulture));
+        }
+
+        private static void LogWarningEvent(object sender, EventInfo e)
+        {
+            Console.WriteLine("[PRETPLATA] " + e.Name + " - " + e.Message);
         }
 
         public void Dispose()

@@ -1,0 +1,37 @@
+Sensor service is open.
+Endpoint: net.tcp://localhost:9000/SensorService
+Press any key to close service.
+[PRETPLATA] OnTransferStarted - prenos u toku... session=20260518_153638_214
+prenos u toku...
+Start session: 20260518_153638_214 V=30
+[PRETPLATA] OnSampleReceived - V=30, T_DHT=22, T_BMP=22.1
+Primljen red 1, V=30, T_DHT=22, T_BMP=22.1
+[EVENT] OnSampleReceived - Primljen red 1
+[PRETPLATA] OnSampleReceived - V=32, T_DHT=22.2, T_BMP=22.2
+Primljen red 2, V=32, T_DHT=22.2, T_BMP=22.2
+[EVENT] OnSampleReceived - Primljen red 2
+[PRETPLATA] OnSampleReceived - V=48, T_DHT=24, T_BMP=23.6
+Primljen red 3, V=48, T_DHT=24, T_BMP=23.6
+[EVENT] OnSampleReceived - Primljen red 3
+[PRETPLATA] OnWarningRaised - VolumeSpike: Delta V = 16.0000, smer: iznad ocekivanog
+[EVENT] OnWarningRaised - VolumeSpike: Delta V = 16.0000, smer: iznad ocekivanog
+[PRETPLATA] OnWarningRaised - TemperatureSpikeDHT: Delta Tdht = 1.8000, smer: iznad ocekivanog
+[EVENT] OnWarningRaised - TemperatureSpikeDHT: Delta Tdht = 1.8000, smer: iznad ocekivanog
+[PRETPLATA] OnWarningRaised - TemperatureSpikeBMP: Delta Tbmp = 1.4000, smer: iznad ocekivanog
+[EVENT] OnWarningRaised - TemperatureSpikeBMP: Delta Tbmp = 1.4000, smer: iznad ocekivanog
+[PRETPLATA] OnWarningRaised - OutOfBandWarning: V = 48.0000, srednja vrednost = 31.0000, smer: iznad ocekivane vrednosti
+[EVENT] OnWarningRaised - OutOfBandWarning: V = 48.0000, srednja vrednost = 31.0000, smer: iznad ocekivane vrednosti
+[PRETPLATA] OnSampleReceived - V=20, T_DHT=21.7, T_BMP=21.9
+Primljen red 4, V=20, T_DHT=21.7, T_BMP=21.9
+[EVENT] OnSampleReceived - Primljen red 4
+[PRETPLATA] OnWarningRaised - VolumeSpike: Delta V = -28.0000, smer: ispod ocekivanog
+[EVENT] OnWarningRaised - VolumeSpike: Delta V = -28.0000, smer: ispod ocekivanog
+[PRETPLATA] OnWarningRaised - TemperatureSpikeDHT: Delta Tdht = -2.3000, smer: ispod ocekivanog
+[EVENT] OnWarningRaised - TemperatureSpikeDHT: Delta Tdht = -2.3000, smer: ispod ocekivanog
+[PRETPLATA] OnWarningRaised - TemperatureSpikeBMP: Delta Tbmp = -1.7000, smer: ispod ocekivanog
+[EVENT] OnWarningRaised - TemperatureSpikeBMP: Delta Tbmp = -1.7000, smer: ispod ocekivanog
+[PRETPLATA] OnWarningRaised - OutOfBandWarning: V = 20.0000, srednja vrednost = 36.6667, smer: ispod ocekivane vrednosti
+[EVENT] OnWarningRaised - OutOfBandWarning: V = 20.0000, srednja vrednost = 36.6667, smer: ispod ocekivane vrednosti
+[PRETPLATA] OnTransferCompleted - zavrsen prenos
+zavrsen prenos
+End session. Primljeno=4, odbaceno=0

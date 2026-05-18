@@ -147,7 +147,7 @@ namespace SensorClient
             }
             catch (InvalidOperationException ex)
             {
-                Console.WriteLine("[SIMULACIJA] Uhvaćen izuzetak: " + ex.Message);
+                Console.WriteLine("[SIMULACIJA] Uhvacen izuzetak: " + ex.Message);
             }
 
             File.Delete(csvPath);
