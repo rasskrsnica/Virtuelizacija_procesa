@@ -1,0 +1,21 @@
+Svaka sesija pocinje meta-zaglavljem:
+{ Volume, T_DHT, T_BMP, Pressure, DateTime }
+
+Pravila slanja:
+- Klijent ucitava CSV dataset.
+- Klijent sekvencijalno prolazi kroz CSV for petljom.
+- U svakoj iteraciji salje tacno jedan SensorSample preko PushSample(sample).
+- Sesija se otvara porukom StartSession(meta).
+- Sesija se zatvara porukom EndSession().
+
+Server odgovara:
+- ACK ako je poruka prihvacena.
+- NACK ako je poruka odbijena.
+- IN_PROGRESS dok je prenos u toku.
+- COMPLETED kada je prenos zavrsen.
+
+Pragovi se nalaze u App.config:
+- V_threshold
+- T_bmp_threshold
+- T_dht_threshold
+- MeanDeviationPercent = 25, za proveru odstupanja ±25% od tekuceg proseka.
