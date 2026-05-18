@@ -1,13 +1,13 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{65F4E3AB-5CA8-48CD-A617-81A656F6D8EC}</ProjectGuid>
+    <ProjectGuid>{9F3CF5C5-0DA5-4D39-95A9-8631FA700001}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>SensorClient</RootNamespace>
-    <AssemblyName>SensorClient</AssemblyName>
+    <RootNamespace>Service</RootNamespace>
+    <AssemblyName>Service</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -34,36 +34,39 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Infrastructure\CsvDatasetReader.cs" />
+    <Compile Include="..\SensorService\Service1.svc.cs">
+      <Link>Service1.cs</Link>
+    </Compile>
+    <Compile Include="..\SensorService\Services\SensorService.cs">
+      <Link>SensorService.cs</Link>
+    </Compile>
+    <Compile Include="..\SensorService\SensorAnalytics.cs">
+      <Link>SensorAnalytics.cs</Link>
+    </Compile>
+    <Compile Include="..\SensorService\SensorStorage.cs">
+      <Link>SensorStorage.cs</Link>
+    </Compile>
+    <Compile Include="..\SensorService\SessionState.cs">
+      <Link>SessionState.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\Data.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SensorCommon\SensorCommon.csproj">
+    <ProjectReference Include="..\Common\Common.csproj">
       <Project>{7c1ac10f-65ef-474e-a97d-82f67ac6e97a}</Project>
-      <Name>SensorCommon</Name>
+      <Name>Common</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{65F4E3AB-5CA8-48CD-A617-81A656F6D8EC}</ProjectGuid>
+    <ProjectGuid>{9F3CF5C5-0DA5-4D39-95A9-8631FA700001}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>SensorClient</RootNamespace>
-    <AssemblyName>SensorClient</AssemblyName>
+    <RootNamespace>SensorHost</RootNamespace>
+    <AssemblyName>SensorHost</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -34,25 +34,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Infrastructure\CsvDatasetReader.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\Data.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
@@ -60,10 +52,10 @@
       <Project>{7c1ac10f-65ef-474e-a97d-82f67ac6e97a}</Project>
       <Name>SensorCommon</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\SensorService\SensorService.csproj">
+      <Project>{20913f64-375d-4490-8244-532e34893574}</Project>
+      <Name>SensorService</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

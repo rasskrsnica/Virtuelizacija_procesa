@@ -1,10 +1,5 @@
 ﻿using SensorCommon.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SensorCommon.Contracts
 {
@@ -12,12 +7,17 @@ namespace SensorCommon.Contracts
     public interface ISensorService
     {
         [OperationContract]
-        string StartSession();
+        [FaultContract(typeof(DataFormatFault))]
+        [FaultContract(typeof(ValidationFault))]
+        SensorResponse StartSession(SessionMeta meta);
 
         [OperationContract]
-        string PushSample(SensorSample sample);
+        [FaultContract(typeof(DataFormatFault))]
+        [FaultContract(typeof(ValidationFault))]
+        SensorResponse PushSample(SensorSample sample);
 
         [OperationContract]
-        string EndSession();
+        [FaultContract(typeof(ValidationFault))]
+        SensorResponse EndSession();
     }
 }
