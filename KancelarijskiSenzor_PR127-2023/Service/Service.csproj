@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourceDisposeSimulation.cs" />
     <Compile Include="Service1.cs" />
     <Compile Include="Services\SensorService.cs" />
     <Compile Include="SensorAnalytics.cs" />

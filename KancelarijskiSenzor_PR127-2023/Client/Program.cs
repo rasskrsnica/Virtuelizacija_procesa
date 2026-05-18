@@ -38,6 +38,9 @@ namespace SensorClient
                             SendCsvDataset(proxy);
                             break;
                         case 3:
+                            SimulateReaderDisposeAfterException();
+                            break;
+                        case 4:
                             Console.WriteLine("Kraj programa.");
                             break;
                         default:
@@ -45,7 +48,7 @@ namespace SensorClient
                             break;
                     }
                 }
-                while (option != 3);
+                while (option != 4);
 
                 channel.Close();
                 factory.Close();
@@ -79,7 +82,8 @@ namespace SensorClient
             Console.WriteLine("------------------------------");
             Console.WriteLine("1. Posalji test merenja");
             Console.WriteLine("2. Posalji prvih 100 redova iz CSV dataset-a");
-            Console.WriteLine("3. Izlaz");
+            Console.WriteLine("3. Simuliraj izuzetak i provera Dispose reader-a");
+            Console.WriteLine("4. Izlaz");
             Console.Write("Izbor: ");
 
             int option;
@@ -118,6 +122,38 @@ namespace SensorClient
                 Console.WriteLine("Reject log: " + rejectLogPath);
                 StartAndSend(proxy, samples);
             }
+        }
+
+        private static void SimulateReaderDisposeAfterException()
+        {
+            string folder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "DisposeSimulation");
+            string csvPath = Path.Combine(folder, "dispose_test.csv");
+            string rejectPath = Path.Combine(folder, "dispose_rejects.csv");
+
+            Directory.CreateDirectory(folder);
+            File.WriteAllLines(csvPath, new[]
+            {
+                "Date time,Volume [mV],Light_Level [Ohms],Temperature-DHT [Celsius],Pressure [Hectopascal],Temperature-BMP [Celsius]",
+                "2016-11-27 17:22:45,100,5000,24.05,1024.43,24.13"
+            });
+
+            try
+            {
+                using (CsvDatasetReader reader = new CsvDatasetReader(csvPath, rejectPath, MaxRowsToSend))
+                {
+                    reader.ReadSamples();
+                    throw new InvalidOperationException("Simuliran prekid tokom citanja CSV fajla.");
+                }
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.WriteLine("[SIMULACIJA] Uhvaćen izuzetak: " + ex.Message);
+            }
+
+            File.Delete(csvPath);
+            File.Delete(rejectPath);
+            Directory.Delete(folder);
+            Console.WriteLine("[SIMULACIJA] Privremeni fajlovi su obrisani, reader/reject log nisu ostali zakljucani.");
         }
 
         private static void StartAndSend(ISensorService proxy, System.Collections.Generic.IList<SensorSample> samples)

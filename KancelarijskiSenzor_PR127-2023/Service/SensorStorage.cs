@@ -15,6 +15,9 @@ namespace SensorService
         private string metadataFile;
         private bool disposed;
 
+        internal string CurrentSessionDirectory { get; private set; }
+        internal string CurrentSessionId { get; private set; }
+
         public SensorStorage()
         {
             storagePath = ResolvePath(ConfigurationManager.AppSettings["StorageDirectory"] ?? "App_Data");
@@ -26,6 +29,8 @@ namespace SensorService
             string sessionId = DateTime.Now.ToString("yyyyMMdd_HHmmss_fff", CultureInfo.InvariantCulture);
             string folder = Path.Combine(storagePath, "OfficeSensor", DateTime.Now.ToString("yyyyMMdd", CultureInfo.InvariantCulture));
             Directory.CreateDirectory(folder);
+            CurrentSessionDirectory = folder;
+            CurrentSessionId = sessionId;
 
             string sessionFile = Path.Combine(folder, sessionId + "_measurements_session.csv");
             string rejectedFile = Path.Combine(folder, sessionId + "_rejects.csv");

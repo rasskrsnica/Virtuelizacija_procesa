@@ -9,6 +9,12 @@ namespace Service
     {
         private static void Main(string[] args)
         {
+            if (args.Length > 0 && args[0].Equals("simulate-dispose", StringComparison.OrdinalIgnoreCase))
+            {
+                ResourceDisposeSimulation.RunStorageSimulation();
+                return;
+            }
+
             ServiceHost host = new ServiceHost(typeof(Service1));
             host.Open();
 
